@@ -1,6 +1,7 @@
 package com.saashub.customer;
 
 import com.saashub.common.dto.ApiResponse;
+import com.saashub.customer.dto.CreateCustomerRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;

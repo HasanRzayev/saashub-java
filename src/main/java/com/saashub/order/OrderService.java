@@ -1,49 +1,22 @@
 package com.saashub.order;
 
-import com.saashub.customer.Customer;
-import com.saashub.customer.CustomerRepository;
 import com.saashub.common.exception.BusinessException;
 import com.saashub.common.exception.ResourceNotFoundException;
+import com.saashub.customer.Customer;
+import com.saashub.customer.CustomerRepository;
 import com.saashub.multitenancy.TenantContext;
+import com.saashub.order.dto.CreateTenantOrderRequest;
+import com.saashub.order.dto.OrderItemDTO;
 import com.saashub.product.Product;
 import com.saashub.product.ProductRepository;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.UUID;
-
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-class OrderItemDTO {
-    @NotNull(message = "Product ID is required")
-    private Long productId;
-
-    @NotNull(message = "Quantity is required")
-    private Integer quantity;
-}
-
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-class CreateTenantOrderRequest {
-    @NotNull(message = "Customer ID is required")
-    private Long customerId;
-
-    @NotEmpty(message = "Items list cannot be empty")
-    @Valid
-    private List<OrderItemDTO> items;
-}
 
 @Service
 @RequiredArgsConstructor

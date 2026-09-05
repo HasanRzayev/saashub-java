@@ -2,34 +2,14 @@ package com.saashub.customer;
 
 import com.saashub.common.exception.BusinessException;
 import com.saashub.common.exception.ResourceNotFoundException;
+import com.saashub.customer.dto.CreateCustomerRequest;
 import com.saashub.multitenancy.TenantContext;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import lombok.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-class CreateCustomerRequest {
-    @NotBlank(message = "First name is required")
-    private String firstName;
-
-    @NotBlank(message = "Last name is required")
-    private String lastName;
-
-    @NotBlank(message = "Email is required")
-    @Email(message = "Invalid email")
-    private String email;
-
-    private String phone;
-    private String company;
-}
 
 @Service
 @RequiredArgsConstructor

@@ -1,6 +1,7 @@
 package com.saashub.product;
 
 import com.saashub.common.dto.ApiResponse;
+import com.saashub.product.dto.CreateProductRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;

@@ -3,37 +3,13 @@ package com.saashub.product;
 import com.saashub.common.exception.BusinessException;
 import com.saashub.common.exception.ResourceNotFoundException;
 import com.saashub.multitenancy.TenantContext;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import com.saashub.product.dto.CreateProductRequest;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.math.BigDecimal;
-
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-class CreateProductRequest {
-    @NotBlank(message = "SKU is required")
-    private String sku;
-
-    @NotBlank(message = "Product name is required")
-    private String name;
-
-    private String description;
-
-    @NotNull(message = "Price is required")
-    @DecimalMin(value = "0.01", message = "Price must be positive")
-    private BigDecimal price;
-
-    private Integer stock;
-}
 
 @Service
 @RequiredArgsConstructor
