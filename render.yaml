@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: saashub-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: saashub-postgres
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: saashub-postgres
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: saashub-postgres
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: saashub-postgres
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: saashub-postgres
+          property: password
+
+databases:
+  - name: saashub-postgres
+    plan: free
+    databaseName: saashub_db
+    user: postgres
