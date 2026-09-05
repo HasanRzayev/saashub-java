@@ -30,4 +30,4 @@ databases:
   - name: saashub-postgres
     plan: free
     databaseName: saashub_db
-    user: postgres
+    user: saashub_user
