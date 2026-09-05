@@ -7,27 +7,21 @@ services:
     envVars:
       - key: DB_HOST
         fromDatabase:
-          name: saashub-postgres
+          name: fincore-postgres
           property: host
       - key: DB_PORT
         fromDatabase:
-          name: saashub-postgres
+          name: fincore-postgres
           property: port
       - key: DB_NAME
         fromDatabase:
-          name: saashub-postgres
+          name: fincore-postgres
           property: database
       - key: DB_USER
         fromDatabase:
-          name: saashub-postgres
+          name: fincore-postgres
           property: user
       - key: DB_PASSWORD
         fromDatabase:
-          name: saashub-postgres
+          name: fincore-postgres
           property: password
-
-databases:
-  - name: saashub-postgres
-    plan: free
-    databaseName: saashub_db
-    user: saashub_user
