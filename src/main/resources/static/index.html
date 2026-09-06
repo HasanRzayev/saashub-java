@@ -9,23 +9,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-base: #060911;
-            --bg-surface: #0c1322;
-            --bg-card: #121c30;
-            --bg-input: #080d18;
-            --border: #1a2942;
-            --border-hover: #294269;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --text-dim: #64748b;
-            --accent: #10b981;
-            --accent-hover: #059669;
-            --accent-glow: rgba(16, 185, 129, 0.16);
-            --danger: #f87171;
+            --bg-base: #f8fafc;
+            --bg-surface: #ffffff;
+            --bg-card: #f1f5f9;
+            --bg-input: #ffffff;
+            --border: #e2e8f0;
+            --border-hover: #cbd5e1;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-dim: #94a3b8;
+            --accent: #059669;
+            --accent-hover: #047857;
+            --accent-glow: rgba(5, 150, 105, 0.15);
+            --danger: #dc2626;
             --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             --radius-sm: 6px;
             --radius-md: 10px;
             --radius-lg: 16px;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
         }
 
         * {
@@ -42,15 +45,17 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            -webkit-font-smoothing: antialiased;
         }
 
         header {
-            background: rgba(12, 19, 34, 0.88);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 50;
+            box-shadow: var(--shadow-sm);
         }
 
         .header-container {
@@ -69,8 +74,8 @@
         }
 
         .logo-badge {
-            background: linear-gradient(135deg, #10b981, #047857);
-            color: #022c22;
+            background: linear-gradient(135deg, #059669, #047857);
+            color: #ffffff;
             font-weight: 800;
             font-size: 13px;
             padding: 4px 10px;
@@ -82,6 +87,7 @@
             font-size: 19px;
             font-weight: 700;
             letter-spacing: -0.3px;
+            color: var(--text-main);
         }
 
         .logo-subtitle {
@@ -112,7 +118,7 @@
         }
 
         .btn-ghost {
-            background: transparent;
+            background: var(--bg-surface);
             color: var(--text-muted);
             border-color: var(--border);
         }
@@ -120,17 +126,17 @@
         .btn-ghost:hover {
             color: var(--text-main);
             border-color: var(--border-hover);
-            background: var(--bg-surface);
+            background: var(--bg-card);
         }
 
         .btn-accent {
             background: var(--accent);
-            color: #022c22;
+            color: #ffffff;
         }
 
         .btn-accent:hover {
             background: var(--accent-hover);
-            box-shadow: 0 0 16px var(--accent-glow);
+            box-shadow: 0 4px 12px var(--accent-glow);
         }
 
         main {
@@ -151,15 +157,15 @@
         }
 
         .alert-success {
-            background: rgba(16, 185, 129, 0.12);
-            color: #6ee7b7;
-            border: 1px solid rgba(16, 185, 129, 0.3);
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
         }
 
         .alert-error {
-            background: rgba(248, 113, 113, 0.12);
-            color: #fca5a5;
-            border: 1px solid rgba(248, 113, 113, 0.3);
+            background: #fef2f2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
         }
 
         /* Auth Card */
@@ -170,6 +176,7 @@
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
             padding: 36px;
+            box-shadow: var(--shadow-lg);
         }
 
         .auth-header {
@@ -182,6 +189,7 @@
             font-weight: 700;
             letter-spacing: -0.4px;
             margin-bottom: 6px;
+            color: var(--text-main);
         }
 
         .auth-header p {
@@ -191,7 +199,7 @@
 
         .auth-tabs {
             display: flex;
-            background: var(--bg-base);
+            background: var(--bg-card);
             padding: 4px;
             border-radius: var(--radius-sm);
             margin-bottom: 24px;
@@ -211,8 +219,9 @@
         }
 
         .auth-tab.active {
-            background: var(--bg-card);
+            background: var(--bg-surface);
             color: var(--text-main);
+            box-shadow: var(--shadow-sm);
         }
 
         .form-group {
@@ -223,7 +232,7 @@
             display: block;
             font-size: 11px;
             font-weight: 700;
-            color: var(--text-dim);
+            color: var(--text-muted);
             margin-bottom: 6px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -239,10 +248,12 @@
             font-size: 14px;
             border-radius: var(--radius-sm);
             outline: none;
+            transition: border-color 0.15s ease, box-shadow 0.15s ease;
         }
 
         .form-input:focus, .form-select:focus {
             border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
         }
 
         /* Multi-Tenant Cockpit */
@@ -257,14 +268,15 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 16px;
+            box-shadow: var(--shadow-sm);
         }
 
         .tenant-pill {
             font-size: 12px;
             font-weight: 700;
-            color: var(--accent);
-            background: rgba(16, 185, 129, 0.12);
-            border: 1px solid rgba(16, 185, 129, 0.25);
+            color: #047857;
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
             padding: 4px 12px;
             border-radius: 999px;
             letter-spacing: 0.5px;
@@ -296,6 +308,7 @@
             background: var(--bg-surface);
             color: var(--text-main);
             border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
         }
 
         .grid-2col {
@@ -315,6 +328,7 @@
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
             overflow: hidden;
+            box-shadow: var(--shadow-sm);
         }
 
         .panel-header {
@@ -322,6 +336,8 @@
             border-bottom: 1px solid var(--border);
             font-size: 15px;
             font-weight: 700;
+            color: var(--text-main);
+            background: #fafafa;
         }
 
         .panel-body {
@@ -343,16 +359,21 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             border-bottom: 1px solid var(--border);
+            background: var(--bg-card);
         }
 
         td {
             padding: 14px 16px;
-            border-bottom: 1px solid rgba(26, 41, 66, 0.5);
+            border-bottom: 1px solid var(--border);
             color: var(--text-muted);
         }
 
         tr:last-child td {
             border-bottom: none;
+        }
+
+        tr:hover td {
+            background: #f8fafc;
         }
 
         .empty-hint {
@@ -369,6 +390,7 @@
             font-size: 12px;
             color: var(--text-dim);
             background: var(--bg-surface);
+            margin-top: auto;
         }
     </style>
 </head>
